@@ -151,6 +151,5 @@ app.delete('/entries/:id', (req, res) => {
 // })
 
 app.listen(process.env.PORT || 8081, function () {
-  var port = server.address().port;
-  console.log("Express is working on port " + port);
+  console.log("Express is working on port " + process.env.PORT);
 });

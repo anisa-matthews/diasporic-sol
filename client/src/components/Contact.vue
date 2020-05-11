@@ -45,4 +45,13 @@ a{
   line-height: 3rem;
 }
 
+/*MEDIA QUERIES*/
+@media only screen and (max-width: 992px) {
+   /*For mobile phones and tablets: */
+  .grid{
+    display: inline-block;
+    font-size: 1.4em;
+  }
+}
+
 </style>

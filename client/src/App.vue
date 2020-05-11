@@ -55,7 +55,7 @@ h1 {
 
 #back{
   position: fixed;
-  width: 50px;
+  width: 2.5vw;
 }
 
 .text-div{
@@ -64,6 +64,25 @@ h1 {
 
 #sun{
   width: 20%;
+}
+
+a:hover{
+  text-decoration: underline wavy white;
+}
+
+@media only screen and (max-width: 992px) {
+  /* For mobile phones and tablets: */
+  h1{
+    font-size: 1.8em;
+  }
+
+  h4, p{
+    font-size: 1em;
+  }
+
+  #back{
+    width: 4vw;
+  }
 }
 
 </style>

@@ -33,7 +33,7 @@ export default {
   text-align: center;
   top: 50%;
   width: 100%;
-  font-size: 84px;
+  font-size: 5rem;
 }
 
 .nav-links, a {
@@ -41,11 +41,12 @@ export default {
   text-decoration: none;
   position: absolute;
   text-align: center;
-  font-size: 30px;
+  font-size: 2rem;
 }
 
 .nav-links:hover {
   color: white;
+  text-decoration: underline wavy white;
 }
 
 #entries {
@@ -68,6 +69,29 @@ export default {
   right: -5px;
   top: 45%;
   transform: rotate(-90deg);
+}
+
+/*MEDIA QUERIES*/
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  #home-title {
+    font-size: 2.5rem;
+  }
+
+  .nav-links{
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  /* For tablets: */
+  #home-title {
+    font-size: 4rem;
+  }
+
+  .nav-links{
+    font-size: 1.7rem;
+  }
 }
 
 </style>

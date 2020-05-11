@@ -13,7 +13,8 @@ export default {
 <style scoped>
 
 #rectangle{
-  max-height: 500px;
+  max-height: 90vw;
+  max-width: 90vw;
   object-fit: cover;
 }
 
@@ -31,6 +32,16 @@ export default {
   border-image: url('./../../assets/postcard1.png') 40 repeat;
   border-image-width:25px;
   border-image-outset:15px;
+}
+
+/*MEDIA QUERIES*/
+@media only screen and (max-width: 992px) {
+  /* For mobile phones and tablets: */
+  #square, #rectangle{
+    max-height: 40vh;
+    max-width: 40vw;
+    padding: 0px;
+  }
 }
 
 </style>

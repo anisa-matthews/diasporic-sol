@@ -41,7 +41,7 @@ h1 {
 
 .text-div {
   float: left;
-  padding: 60px 30px;
+  padding: 60px;
 }
 
 .text-div p {
@@ -54,6 +54,32 @@ h1 {
   height: 100%;
   width: 50%;
   float: right;
+}
+
+/*MEDIA QUERIES*/
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .text-div{
+    padding: 20px;
+  }
+
+  .postcard-photo{
+    margin-top: min(15vh, 100px)
+  }
+
+  .text-div h4{
+    font-size: .9em;
+  }
+
+  .text-div p{
+    font-size: 1em;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .postcard-photo{
+    margin-top: 15vh;
+  }
 }
 
 </style>

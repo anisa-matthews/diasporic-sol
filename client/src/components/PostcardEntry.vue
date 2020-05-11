@@ -4,7 +4,7 @@
       <b-card id="postcard" no-body class="overflow-hidden">
         <b-row no-gutters>
           <b-col md="6">
-            <b-card-img :src="'http://localhost:8081/'+ title + '.' + type" alt="Image"></b-card-img>
+            <b-card-img :src="'/uploads/'+ title + '.' + type" alt="Image"></b-card-img>
           </b-col>
           <b-col md="6">
             <b-card-body :title="title" :sub-title="author">

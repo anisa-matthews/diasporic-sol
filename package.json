@@ -1,0 +1,33 @@
+{
+  "name": "diasporic-sol",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "mongodb": "^3.5.6",
+    "mongoose": "^5.9.9",
+    "vue-cli": "^2.9.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "heroku-postbuild": "npm run build-client && npm run install-server",
+    "start": "node server/src/app.js",
+    "build-client": "cd ./client && npm install && npm run build",
+    "install-server": "cd ./server && npm install"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anisa-matthews/mevn-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "cacheDirectories": [
+    "client/node_modules",
+    "server/node_modules"
+  ],
+  "homepage": "https://github.com/anisa-matthews/mevn-blog#readme"
+}

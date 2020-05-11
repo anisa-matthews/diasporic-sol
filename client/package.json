@@ -15,10 +15,12 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.13.0",
+    "moment": "^2.25.1",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
-  },
-  "devDependencies": {
+    "vue-picture-input": "^2.1.6",
+    "vue-router": "^3.0.1",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.1",

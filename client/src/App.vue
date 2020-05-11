@@ -40,6 +40,7 @@ body {
   background-size: cover;
   background-position: 0 -3px;
   background-attachment: fixed;
+  margin-top: 0px;
 }
 
 @font-face {

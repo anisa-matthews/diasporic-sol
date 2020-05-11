@@ -3,12 +3,14 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
 var path = require("path");
+var history = require('connect-history-api-fallback');
 
 const app = express()
 app.use(morgan('combined'))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cors())
+app.use(history());
 
 app.use(express.static(path.join(__dirname,'uploads')));
 app.use(express.static(path.join(__dirname, '../../client/dist'))) 
@@ -34,6 +36,7 @@ db.once("open", function(callback){
   console.log("Connection Succeeded");
 });
 
+//View entries
 app.get('/entries', (req, res) => {
   Entry.find({}, 'title subtitle author category description date imageType', function (error, entries) {
     if (error) { console.error(error); }

@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, '../../client/dist')))
 
 const multer = require('multer')
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) { cb(null, '../../client/uploads') },
+  destination: function (req, file, cb) { cb(null, './uploads') },
   filename: function (req, file, cb) {
     let name = file.originalname
     console.log('this is the final name: ' + name)
@@ -119,6 +119,11 @@ app.delete('/entries/:id', (req, res) => {
     })
   })
 })
+
+// //View image
+// app.get('/:', (req, res) => {
+  
+// })
 
 // // Update a post
 // app.put('/entry/:id', (req, res) => {

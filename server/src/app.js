@@ -5,6 +5,12 @@ const morgan = require('morgan')
 var path = require("path");
 var history = require('connect-history-api-fallback');
 
+var mongoose = require('mongoose');
+
+const multer = require('multer');
+// const Grid = require('gridfs-stream');
+// const GridFsStorage = require('multer-gridfs-storage');
+
 const app = express()
 app.use(morgan('combined'))
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -15,26 +21,25 @@ app.use(history());
 app.use(express.static(path.join(__dirname,'uploads')));
 app.use(express.static(path.join(__dirname, '../../client/dist'))) 
 
-const multer = require('multer')
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) { cb(null, './uploads') },
-  filename: function (req, file, cb) {
-    let name = file.originalname
-    console.log('this is the final name: ' + name)
-    cb(null, name)
-  }
-});
-var upload = multer({ storage: storage })
-
-var mongoose = require('mongoose');
 var Entry = require("../models/entry");
-const connectString = "mongodb+srv://admin:iamadmin@getstarted-64vvf.mongodb.net/test?retryWrites=true&w=majority";
+const connectString = process.env.MONGO_URL;
 mongoose.connect(connectString, {useNewUrlParser:true, useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error"));
 db.once("open", function(callback){
   console.log("Connection Succeeded");
 });
+
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) { cb(null, path.join(__dirname,'./uploads')) },
+  filename: function (req, file, cb) {
+    let name = file.originalname
+    console.log('this is the final name: ' + name)
+    cb(null, name)
+  }
+});
+var upload = multer({ storage: storage });
 
 //View entries
 app.get('/entries', (req, res) => {

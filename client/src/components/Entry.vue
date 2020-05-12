@@ -8,7 +8,7 @@
     <b-container class='text-div'>
       <h1>{{ entry.title }}</h1>
       <h5>{{ entry.author }} ~ {{ normalizeDate(entry.date) }} ~ {{ entry.category }}</h5>
-      <postcard-photo type='rectangle' :img="'http://localhost:8081/'+ entry.title + '.' + entry.imageType"></postcard-photo><br>
+      <postcard-photo type='rectangle' :img="'static/'+ entry.title + '.' + entry.imageType"></postcard-photo><br>
       <div id='desc' v-for="(line,index) in entry.description.split('\n')" :key="index"><p>{{ line }}</p></div>
       <img id='back' src='./../../assets/back.png' @click="scrollToTop()">
     </b-container>

@@ -17,12 +17,12 @@
     upload: '<h1>Upload any images here!</h1>',
     drag: 'Drag an image or click here to select a file'}">
           </picture-input>
-          <!-- <div v-if="this.message"><h4 id='message'>{{ message }}</h4></div>
+          <div v-if="this.message"><h4 id='message'>{{ message }}</h4></div>
           <div v-else>
           <button @click="attemptUpload" v-bind:class="{ disabled: !image }">
             Upload
           </button>
-        </div> -->
+        </div>
       </div>
       <div class=col>
         <textarea rows="35" cols="25" placeholder="Type or paste your entry here" v-model="description"></textarea>

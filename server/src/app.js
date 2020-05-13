@@ -84,7 +84,7 @@ app.post('/entries', (req, res) => {
     category: category,
     description: description,
     date: date,
-    image: {data: toBase64(img), type: img.type}
+    image: {data: btoa(img), type: img.type}
   });
 
   new_entry.save(function (error) {

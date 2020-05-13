@@ -59,7 +59,7 @@ export default {
         author: this.author,
         category: this.category,
         description: this.description,
-        image: {data: this.image, type: this.image.type}
+        imageType: String(this.image.name).split('.').pop()
       })
       this.$router.push({ name: 'Entries' })
     },

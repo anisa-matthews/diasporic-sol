@@ -34,7 +34,7 @@ db.once("open", function(callback){
 const storage = multer.diskStorage({
   destination: function (req, file, cb) { cb(null, path.join(__dirname,'../../client/static')) },
   filename: function (req, file, cb) {
-    let name = file.originalname + '.' + String(file.type).split('/').pop()
+    let name = file.originalname
     console.log('this is the final name: ' + name)
     cb(null, name)
   }

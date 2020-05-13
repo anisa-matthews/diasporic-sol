@@ -8,8 +8,8 @@ var EntrySchema = new Schema({
   author: String,
   date: { type: Date, default: Date.now },
   category: String,
-  image: {data: Buffer, type: String}
-  // imageType: String
+  // image: {data: Buffer, type: String}
+  imageType: String
 });
 
 var Entry = mongoose.model("Entry", EntrySchema);

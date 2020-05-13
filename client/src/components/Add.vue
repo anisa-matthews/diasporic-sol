@@ -17,12 +17,12 @@
     upload: '<h1>Upload any images here!</h1>',
     drag: 'Drag an image or click here to select a file'}">
           </picture-input>
-          <div v-if="this.message"><h4 id='message'>{{ message }}</h4></div>
+          <!-- <div v-if="this.message"><h4 id='message'>{{ message }}</h4></div>
           <div v-else>
           <button @click="attemptUpload" v-bind:class="{ disabled: !image }">
             Upload
           </button>
-        </div>
+        </div> -->
       </div>
       <div class=col>
         <textarea rows="35" cols="25" placeholder="Type or paste your entry here" v-model="description"></textarea>
@@ -72,19 +72,19 @@ export default {
       }
     },
     onRemoved () { this.image = '' }
-    // attemptUpload () {
-    //   if (!this.title) {
-    //     this.message = 'Please specify an entry title'
-    //   } else {
-    //     let name = String(this.title) + '.' + String(this.image.name).split('.').pop()
-    //     let img = this.image
-    //     EntryService.upload(img, name).then(res => {
-    //       if (res.data.success) {
-    //         this.message = 'Image uploaded successfully ✨'
-    //       }
-    //     }).catch(err => { console.error(err) })
-    //   }
-    // }
+    attemptUpload () {
+      if (!this.title) {
+        this.message = 'Please specify an entry title'
+      } else {
+        let name = String(this.title) + '.' + String(this.image.name).split('.').pop()
+        let img = this.image
+        EntryService.upload(img, name).then(res => {
+          if (res.data.success) {
+            this.message = 'Image uploaded successfully ✨'
+          }
+        }).catch(err => { console.error(err) })
+      }
+    }
   }
 }
 

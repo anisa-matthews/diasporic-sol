@@ -8,7 +8,7 @@ const fs = require('fs')
 
 var mongoose = require('mongoose');
 
-// const multer = require('multer');
+const multer = require('multer');
 // const Grid = require('gridfs-stream');
 // const GridFsStorage = require('multer-gridfs-storage');
 
@@ -31,15 +31,15 @@ db.once("open", function(callback){
   console.log("Connection Succeeded");
 });
 
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) { cb(null, path.join(__dirname,'../../client/static')) },
-//   filename: function (req, file, cb) {
-//     let name = file.originalname + '.' + String(file.type).split('/').pop()
-//     console.log('this is the final name: ' + name)
-//     cb(null, name)
-//   }
-// });
-// var upload = multer({ storage: storage });
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) { cb(null, path.join(__dirname,'../../client/static')) },
+  filename: function (req, file, cb) {
+    let name = file.originalname + '.' + String(file.type).split('/').pop()
+    console.log('this is the final name: ' + name)
+    cb(null, name)
+  }
+});
+var upload = multer({ storage: storage });
 
 //View entries
 app.get('/entries', (req, res) => {
@@ -72,7 +72,6 @@ app.post('/entries', (req, res) => {
   var date = new Date();
 
   var img = req.body.image;
-  img.name = title;
   console.log('Image received: ' + img);
   try{ 
     fs.writeFileSync(path.join(__dirname,'../../client/static'), img); 
@@ -85,7 +84,7 @@ app.post('/entries', (req, res) => {
     category: category,
     description: description,
     date: date,
-    image: {data: img, type: img.type}
+    image: {data: toBase64(img), type: img.type}
   });
 
   new_entry.save(function (error) {

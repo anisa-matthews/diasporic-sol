@@ -98,21 +98,21 @@ app.post('/entries', (req, res) => {
   })
 })
 
-// //add image
-// app.post('/upload', upload.single('entry-image'), (req, res) => {
-//   if (!req.file) {
-//     console.log("No file received");
-//     return res.send({
-//       success: false
-//     });
+//add image
+app.post('/upload', upload.single('entry-image'), (req, res) => {
+  if (!req.file) {
+    console.log("No file received");
+    return res.send({
+      success: false
+    });
 
-//   } else {
-//     console.log('file received');
-//     return res.send({
-//       success: true
-//     })
-//   }
-// });
+  } else {
+    console.log('file received');
+    return res.send({
+      success: true
+    })
+  }
+});
 
 // Delete a post
 app.delete('/entries/:id', (req, res) => {

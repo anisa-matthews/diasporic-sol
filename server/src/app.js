@@ -75,7 +75,7 @@ app.post('/entries', (req, res) => {
   img.name = title;
   console.log('Image received: ' + img);
   try{ 
-    fs.writeFileSync(path.join(__dirname,'../../client/static')); 
+    fs.writeFileSync(path.join(__dirname,'../../client/static'), img); 
   } catch (error) { console.log(error); }
 
   var new_entry = new Entry({

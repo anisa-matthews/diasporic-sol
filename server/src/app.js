@@ -4,10 +4,11 @@ const cors = require('cors')
 const morgan = require('morgan')
 var path = require("path");
 var history = require('connect-history-api-fallback');
+const fs = require('fs')
 
 var mongoose = require('mongoose');
 
-const multer = require('multer');
+// const multer = require('multer');
 // const Grid = require('gridfs-stream');
 // const GridFsStorage = require('multer-gridfs-storage');
 
@@ -30,16 +31,15 @@ db.once("open", function(callback){
   console.log("Connection Succeeded");
 });
 
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) { cb(null, path.join(__dirname,'./../uploads')) },
-  filename: function (req, file, cb) {
-    let name = file.originalname
-    console.log('this is the final name: ' + name)
-    cb(null, name)
-  }
-});
-var upload = multer({ storage: storage });
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) { cb(null, path.join(__dirname,'../../client/static')) },
+//   filename: function (req, file, cb) {
+//     let name = file.originalname + '.' + String(file.type).split('/').pop()
+//     console.log('this is the final name: ' + name)
+//     cb(null, name)
+//   }
+// });
+// var upload = multer({ storage: storage });
 
 //View entries
 app.get('/entries', (req, res) => {
@@ -70,8 +70,14 @@ app.post('/entries', (req, res) => {
   var category = req.body.category;
   var description = req.body.description;
   var date = new Date();
-  var type = req.body.imageType;
-  console.log('Type received: ' + type);
+
+  var img = req.body.image;
+  img.name = title;
+  console.log('Image received: ' + img);
+  try{ 
+    fs.writeFileSync(path.join(__dirname,'../../client/static')); 
+  } catch (error) { console.log(error); }
+
   var new_entry = new Entry({
     title: title,
     subtitle: subtitle,
@@ -79,9 +85,8 @@ app.post('/entries', (req, res) => {
     category: category,
     description: description,
     date: date,
-    imageType: type
+    image: {data: img, type: img.type}
   });
-  // console.log(new_entry);
 
   new_entry.save(function (error) {
     if (error) {
@@ -94,21 +99,21 @@ app.post('/entries', (req, res) => {
   })
 })
 
-//add image
-app.post('/upload', upload.single('entry-image'), (req, res) => {
-  if (!req.file) {
-    console.log("No file received");
-    return res.send({
-      success: false
-    });
+// //add image
+// app.post('/upload', upload.single('entry-image'), (req, res) => {
+//   if (!req.file) {
+//     console.log("No file received");
+//     return res.send({
+//       success: false
+//     });
 
-  } else {
-    console.log('file received');
-    return res.send({
-      success: true
-    })
-  }
-});
+//   } else {
+//     console.log('file received');
+//     return res.send({
+//       success: true
+//     })
+//   }
+// });
 
 // Delete a post
 app.delete('/entries/:id', (req, res) => {

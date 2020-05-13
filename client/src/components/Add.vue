@@ -71,7 +71,7 @@ export default {
         console.log('Old browser. No support for Filereader API')
       }
     },
-    onRemoved () { this.image = '' }
+    onRemoved () { this.image = '' },
     attemptUpload () {
       if (!this.title) {
         this.message = 'Please specify an entry title'

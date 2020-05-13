@@ -9,13 +9,13 @@ export default {
     return Api().post('entries', params)
   },
 
-  upload (image, name) {
-    const formData = new FormData()
-    formData.append('entry-image', image, name)
+  // upload (image, name) {
+  //   const formData = new FormData()
+  //   formData.append('entry-image', image, name)
 
-    let config = {headers: { 'content-type': 'multipart/form-data' }}
-    return Api().post('upload', formData, config)
-  },
+  //   let config = {headers: { 'content-type': 'multipart/form-data' }}
+  //   return Api().post('upload', formData, config)
+  // },
 
   // updatePost (params) {
   //   return Api().put('entries/' + params.id, params)

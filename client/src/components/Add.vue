@@ -59,7 +59,7 @@ export default {
         author: this.author,
         category: this.category,
         description: this.description,
-        imageType: String(this.image.name).split('.').pop()
+        image: {data: this.image, type: this.image.type}
       })
       this.$router.push({ name: 'Entries' })
     },
@@ -71,20 +71,20 @@ export default {
         console.log('Old browser. No support for Filereader API')
       }
     },
-    onRemoved () { this.image = '' },
-    attemptUpload () {
-      if (!this.title) {
-        this.message = 'Please specify an entry title'
-      } else {
-        let name = String(this.title) + '.' + String(this.image.name).split('.').pop()
-        let img = this.image
-        EntryService.upload(img, name).then(res => {
-          if (res.data.success) {
-            this.message = 'Image uploaded successfully ✨'
-          }
-        }).catch(err => { console.error(err) })
-      }
-    }
+    onRemoved () { this.image = '' }
+    // attemptUpload () {
+    //   if (!this.title) {
+    //     this.message = 'Please specify an entry title'
+    //   } else {
+    //     let name = String(this.title) + '.' + String(this.image.name).split('.').pop()
+    //     let img = this.image
+    //     EntryService.upload(img, name).then(res => {
+    //       if (res.data.success) {
+    //         this.message = 'Image uploaded successfully ✨'
+    //       }
+    //     }).catch(err => { console.error(err) })
+    //   }
+    // }
   }
 }
 
